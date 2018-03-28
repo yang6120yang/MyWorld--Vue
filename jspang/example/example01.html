@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>第一课 实例入门-实例属性</title>
+    <script src="../assets/js/vue.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>第一课 实例入门-实例属性</h1>
+    <div id="app">
+       {{ num }}
+       <p><button @click="add">Add</button></p>
+       <p>
+           {{ message }}
+       </p>
+    </div>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                num:1,
+                message:'Hello World!'
+            },
+            methods:{
+                add:function(){
+                    this.num++;
+                    $('#app').find('p:last-of-type').append('小尾巴 ');
+                    console.log('调用了构造器内部的add方法！');
+                }
+            },
+            mounted:function(){
+                $('#app').find('p:last-of-type').html('我是jQuery！');
+            }
+        });
+        app.add();
+    </script>
+</body>
+</html>

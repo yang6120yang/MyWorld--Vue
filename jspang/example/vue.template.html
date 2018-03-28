@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Template 制作模板</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Template 制作模板（三种写法）</h1>
+    <hr>
+    <div id="app">
+        {{ message }}
+    </div>
+    <template id="box">
+        <h2 style="color:blue;">我是Template标签模板</h2>
+    </template>
+    <script type="x-template" id="sct">
+        <h2 style="color:green;">我是Script标签模板</h2>
+    </script>
+    <script>
+        /* 
+        ** 一、直接写在选项里的模板
+        ** 二、写在<template>标签里的模板
+        ** 三、写在<script>标签里的模板
+        */
+        var app = new Vue({
+            el:'#app',
+            data:{
+                message:'Hello World!'
+            },
+            // template:`
+            //     <h2 style="color:red;">我是选项模板</h2>
+            // `
+            // template:'#box'
+            template:'#sct'
+        });
+    </script>
+</body>
+</html>

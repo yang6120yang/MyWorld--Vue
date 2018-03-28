@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>第二课 实例</title>
+    <script src="../assets/js/vue.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>第一课 实例</h1>
+    <div id="app">
+       
+    </div>
+    <p><button onclick="destroy()">卸载</button></p>
+    <p><button onclick="reload()">刷新</button></p>
+    <p><button onclick="tick()">更改数据</button></p>
+    <script>
+        var jsbox = Vue.extend({
+            template:`
+                <p>{{ message }}</p>
+            `,
+            data:function(){
+                return{
+                    message:'Hello,I am jsbox!'
+                }
+            },
+            mounted:function(){
+                console.log('mounted 被创建');
+            },
+            destroyed:function(){
+                console.log('destroyed 销毁之后');
+            },
+            updated:function(){
+                console.log('updated 更新之后');
+            }
+        });
+        var vm = new jsbox().$mount('#app');//挂载方法
+        function destroy(){//销毁的方法
+            vm.$destroy();
+        }
+        function reload(){//更新的方法
+            vm.$forceUpdate();
+        }
+        function tick(){//数据修改的方法
+            vm.message="update message info ";
+            vm.$nextTick(function(){
+                console.log('message更新完后我被调用了');
+            })
+        }
+    </script>
+</body>
+</html>

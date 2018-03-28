@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>lesson03</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>lesson 03 v-text&v-html</h1>
+    <!-- <div class="box1" id="app">
+        <span>{{ messege }}</span>
+    </div> -->
+    <div class="box1" id="app">
+        <span v-text="messege"></span>
+        <div v-html="dodo"></div>
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                messege:'Hello Young!',
+                dodo:'<h2>Welcome to China!</h2>'
+            }
+        })
+    </script>
+</body>
+</html>

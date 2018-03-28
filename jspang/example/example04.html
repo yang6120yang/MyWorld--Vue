@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>第四课 内置组件 -slot</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>第四课 内置组件 -slot</h1>
+    <hr>
+    <div id="app">
+        <jsbox>
+            <span slot="blogUrl">{{ jsboxData.blogUrl }}</span>
+            <span slot="netName">{{ jsboxData.netName }}</span>
+            <span slot="skill">{{ jsboxData.skill }}</span>
+        </jsbox>
+    </div>
+    <template id="tep">
+        <div>
+            <p>网址：<slot name="blogUrl"></slot></p>
+            <p>网名：<slot name="netName"></slot></p>
+            <p>简介：<slot name="skill"></slot></p>
+        </div>
+    </template> 
+    <script>
+        var jsbox = {
+            template:'#tep'
+        }
+        var app = new Vue({
+           el:'#app',
+           data:{
+               jsboxData:{
+                   blogUrl:'http://www.baidu.com',
+                   netName:'百度一下',
+                   skill:'懂你所懂'
+               }
+           },
+           components:{
+               'jsbox':jsbox
+           }
+       });
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>computed Option 计算选项</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>computed Option 计算选项</h1>
+    <div class="box1" id="app">
+        <p>{{ newPrice }}</p>
+        <ul>
+            <li v-for="item in reverseNews">{{ item.title }} -- {{ item.date }}</li>
+        </ul>
+    </div>
+    <script>
+        var newsList = [
+            {title:'新时代属于每一个人！习主席这些话 句句掷地有声！',date:'2018/3/17'},
+            {title:'伟大民族精神！习近平定义新内涵 两会金句',date:'2018/3/19'},
+            {title:'李克强：给所有合法产权所有者都吃上长效的定心丸',date:'2018/3/18'},
+            {title:'新华社：弘扬伟大民族精神 凝聚强大精神动力',date:'2018/3/15'},
+            {title:'2018全国两会  从2018年全国两会看民生“新获得”',date:'2018/3/16'},
+        ]
+        var app = new Vue({
+            el:'#app',
+            data:{
+                price:100,
+                newsList:newsList 
+            },
+            computed:{
+                newPrice:function(){
+                    return this.price = '¥ ' + this.price + ' 元';
+                },
+                reverseNews:function(){
+                    return this.newsList.reverse();//反转
+                }
+            }
+        })
+    </script>
+</body>
+</html>

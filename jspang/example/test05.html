@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>lesson 05</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>lesson 05 v-model</h1>
+    <hr>
+    <div class="box1" id="app">
+       <p>原始文本信息：{{ messege }}</p>
+       <h3>文本框</h3>
+       <p>v-model：<input type="text" v-model="messege"></p>
+       <p>v-model.lazy：<input type="text" v-model.lazy="messege"></p>
+       <p>v-model.number：<input type="text" v-model.number="messege"></p>
+       <p>v-model.trim：<input type="text" v-model.trim="messege"></p>
+       <hr>
+       <p>原始文本区域信息：{{ messeges }}</p>
+       <p>文本区域：<textarea name="" id="" cols="30" rows="10" v-model="messeges"></textarea></p>
+       <hr>
+       <div class="div1">
+            <h3>
+                多选按钮绑定一个值
+            </h3>
+            <input type="checkbox" id="isTrue" v-model="isTrue">
+            <label for="isTrue">{{ isTrue }}</label>
+       </div>
+       <hr>
+       <div class="div2">
+            <h3>多选框绑定一个数组</h3>
+            <p>
+                 <input type="checkbox" id="JSPang" value="JSPang" v-model="web_Names">
+                 <label for="JSPang">JSPang</label><br/>
+                 <input type="checkbox" id="Panda" value="Panda" v-model="web_Names">
+                 <label for="JSPang">Panda</label><br/>
+                 <input type="checkbox" id="PanPan" value="PanPan" v-model="web_Names">
+                 <label for="JSPang">PanPan</label>
+                 <p>{{web_Names}}</p>
+            </p>
+       </div>
+       <hr>
+       <div class="div3">
+            <h3>单选按钮绑定</h3>
+            <input type="radio" id="male" value="男" v-model="sex">
+            <label for="male">男</label>
+            <input type="radio" id="female" value="女" v-model="sex" checked>
+            <label for="female">女</label>
+            <p>你选择的性别是：{{sex}}</p>
+       </div>
+    </div>
+    <!--
+    **  .lazy:取代input监听change事件
+    **  .number:输入字符串转为数字
+    **  .trim:输入去掉首尾空格
+    -->
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data:{
+                messege:'Hello Vue.js!',
+                messeges:'这是文本区域的内容…',
+                isTrue:true,
+                web_Names:[],
+                sex:'女'
+            }
+        })
+    </script>
+</body>
+</html>

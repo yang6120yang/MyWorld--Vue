@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.set 全局操作</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Vue.set 全局操作</h1>
+    <hr>
+    <div id="app">
+        {{ count }}
+        <ul>
+            <li v-for="item in arr">{{ item }}</li>
+        </ul>
+    </div>
+    <p><button onclick="add()">Add</button></p>
+    <script>
+        function add(){
+            //*当你利用索引直接设置一个项时，vue不会为我们自动更新。
+            //*当你修改数组的长度时，vue不会为我们自动更新。
+            // Vue.set(outData,'count',2);
+            // outData.count++;
+            // app.count++;
+            // app.arr[1] = 'ddd';
+            Vue.set(app.arr,1,'dd');
+        }
+        var outData = {
+            count:1,
+            goodName:'car',
+            arr:['aaa','bbb','ccc']
+        };
+        var app = new Vue({
+            el:'#app',
+            data:outData
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Watch 选项 监控数据</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Watch 选项 监控数据</h1>
+    <div id="app">
+       <p>今日温度：{{ temperature }} ℃</p>
+       <p>穿衣建议：{{ this.suggestion }}</p>
+       <p>
+           <button @click="add">升高温度</button>
+           <button @click="reduce">降低温度</button>
+       </p>
+    </div>
+    <script>
+        var suggestion = ['T恤短袖','夹克长裙','棉衣羽绒服'];
+        var app = new Vue({
+            el:'#app',
+            data:{
+                temperature:14,
+                suggestion:suggestion[1]
+            },
+            methods:{
+                add:function(){
+                    this.temperature += 5;
+                },
+                reduce:function(){
+                    this.temperature -= 5;
+                }
+            },
+            watch:{//构造器中的监控
+                temperature:function(newVal,oldVal){
+                    if(newVal>=26){
+                        this.suggestion = suggestion[0];
+                    }else if(newVal<26 && newVal>=0){
+                        this.suggestion = suggestion[1];
+                    }else{
+                        this.suggestion = suggestion[2];
+                    }
+                }
+            }
+        });
+        //实例属性的监控
+        // app.$watch('temperature',function(newVal,oldVal){
+        //     if(newVal>=26){
+        //         this.suggestion = suggestion[0];
+        //     }else if(newVal<26 && newVal>=0){
+        //         this.suggestion = suggestion[1];
+        //     }else{
+        //         this.suggestion = suggestion[2];
+        //     }
+        // });
+    </script>
+</body>
+</html>
