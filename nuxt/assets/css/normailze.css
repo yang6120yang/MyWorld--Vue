@@ -1,0 +1,27 @@
+*{
+    margin:0;
+    padding:0;
+}
+html{
+    color:blue;
+}
+a{
+    color: #35495e;
+}
+ul,li{
+    list-style: none;
+}
+.page-enter-active,.page-leave-active{
+    transition: opacity 1s;
+}
+.page-enter,.page-leave-active{
+    opacity: 0;
+}
+.test-enter-active,.test-leave-active{
+    transition: all 1s;
+    font-size: 12px;
+}
+.test-enter,.test-leave-active{
+    opacity: 0;
+    font-size: 40px;
+}
